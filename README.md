@@ -48,7 +48,7 @@ A modern PHP 8.4+ HTTP client factory and middleware library specifically design
 ## Installation
 
 ```bash
-composer require four-bytes/four-marketplace-http
+composer require four-bytes/four-marketplace-http-client
 ```
 
 ## Requirements
@@ -88,6 +88,26 @@ $client = $factory->createClient(
 // Make requests
 $response = $client->request('GET', '/api/data');
 $data = json_decode($response->getContent(), true);
+```
+
+### Integration with Marketplace Clients
+
+This library serves as the foundation for all Four Bytes marketplace clients:
+
+```php
+// eBay Client with automatic rate limiting
+use Four\Marketplaces\Ebay\ApiClient as EbayClient;
+$ebayClient = new EbayClient($auth, 'production');
+
+// Amazon Client with burst support  
+use Four\Marketplaces\Amazon\ApiClient as AmazonClient;
+$amazonClient = new AmazonClient($auth, 'production');
+
+// All clients automatically benefit from:
+// - Unified rate limiting strategies
+// - Consistent retry middleware
+// - Advanced transport abstraction
+// - Enterprise monitoring
 ```
 
 ### Amazon SP-API Integration
