@@ -212,12 +212,12 @@ class ClientConfigBuilder
     }
 
     /**
-     * Configure rate limiting with simple parameters
+     * Configure rate limiting with policy and parameters
      * 
      * @param string $policy Policy type: 'token_bucket', 'fixed_window', 'sliding_window'
      * @param array<string, mixed> $config Rate limit configuration
      */
-    public function withRateLimit(string $policy, array $config = []): self
+    public function withRateLimitPolicy(string $policy, array $config = []): self
     {
         // This would require the factory to create a rate limiter
         // For now, just store the configuration and let the factory handle it
@@ -230,7 +230,7 @@ class ClientConfigBuilder
     /**
      * Configure retry logic with simple parameters
      */
-    public function withRetries(int $maxAttempts, array $retryableStatusCodes = [429, 500, 502, 503, 504]): self
+    public function withRetryPolicy(int $maxAttempts, array $retryableStatusCodes = [429, 500, 502, 503, 504]): self
     {
         $retryConfig = RetryConfig::create()
             ->withMaxAttempts($maxAttempts)
