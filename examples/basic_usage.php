@@ -126,8 +126,8 @@ echo "6. Fluent configuration example:\n";
 try {
     $fluentConfig = ClientConfig::create('https://api.marketplace.com')
         ->withAuth('bearer', 'your-token-here')
-        ->withRateLimit('token_bucket', ['limit' => 10, 'rate' => ['1 second', 10]])
-        ->withRetries(3, [500, 502, 503, 504])
+        ->withRateLimitPolicy('token_bucket', ['limit' => 10, 'rate' => ['1 second', 10]])
+        ->withRetryPolicy(3, [500, 502, 503, 504])
         ->withTimeout(20.0)
         ->withUserAgent('FluentExample/1.0')
         ->withMiddleware(['logging', 'rate_limiting', 'retry'])

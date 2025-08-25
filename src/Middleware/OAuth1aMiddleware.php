@@ -102,7 +102,7 @@ class OAuth1aHttpClient implements HttpClientInterface
         }
     }
 
-    public function stream($responses, float $timeout = null): ResponseStreamInterface
+    public function stream($responses, ?float $timeout = null): ResponseStreamInterface
     {
         return $this->client->stream($responses, $timeout);
     }

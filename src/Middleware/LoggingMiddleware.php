@@ -86,7 +86,7 @@ class LoggingHttpClient implements HttpClientInterface
         }
     }
 
-    public function stream($responses, float $timeout = null): ResponseStreamInterface
+    public function stream($responses, ?float $timeout = null): ResponseStreamInterface
     {
         return $this->client->stream($responses, $timeout);
     }
@@ -217,7 +217,7 @@ class LoggedResponse implements ResponseInterface
         $this->response->cancel();
     }
 
-    public function getInfo(string $type = null)
+    public function getInfo(?string $type = null)
     {
         return $this->response->getInfo($type);
     }
